@@ -2,9 +2,42 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const ffmpeg = require('fluent-ffmpeg');
-const { upload } = require('./config');
 const path = require('path');
 const fs = require('fs');
+
+
+const uploadsDir =
+path.join(
+  __dirname,
+  "uploads"
+);
+
+const convertsDir =
+path.join(
+  __dirname,
+  "converts"
+);
+
+if(!fs.existsSync(uploadsDir)){
+  fs.mkdirSync(
+    uploadsDir,
+    {
+      recursive:true
+    }
+  );
+}
+
+if(!fs.existsSync(convertsDir)){
+  fs.mkdirSync(
+    convertsDir,
+    {
+      recursive:true
+    }
+  );
+}
+
+
+const { upload } = require('./config');
 
 app.use(cors());
 app.use(express.json());
