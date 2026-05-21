@@ -1,0 +1,182 @@
+:root {
+  color-scheme: light;
+  --bg-start: #f8f7ff;
+  --bg-mid: #ede8fb;
+  --bg-end: #dfe1f5;
+  --panel: rgba(255, 255, 255, 0.18);
+  --panel-border: rgba(255, 255, 255, 0.45);
+  --text: #241336;
+  --muted: #655c73;
+  --accent: #7a5297;
+  --accent-deep: #5e1378;
+  --shadow: 0 20px 50px rgba(123, 98, 180, 0.18);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 50% 18%, rgba(255, 255, 255, 0.95), rgba(241, 238, 251, 0.9) 30%, rgba(225, 224, 248, 0.95) 68%, rgba(209, 210, 240, 1) 100%);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.35), transparent 30%),
+    radial-gradient(circle at 80% 0%, rgba(122, 82, 151, 0.12), transparent 28%),
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.25), transparent 60%);
+  pointer-events: none;
+}
+
+.app {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1.25rem, 3vw, 2rem);
+  padding: clamp(1rem, 2vw, 2.5rem);
+  box-sizing: border-box;
+}
+
+.hero {
+  width: min(100%, 760px);
+  text-align: center;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 4rem);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  text-align: center;
+}
+
+.hero p {
+  margin: 0.7rem auto 0;
+  max-width: 42rem;
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.glassmorfismBox {
+  width: min(100%, 760px);
+  min-height: clamp(150px, 20vw, 380px);
+  display: flex;
+  align-items: stretch;
+  border-radius: clamp(1.25rem, 3vw, 2rem);
+  background: var(--panel);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid var(--panel-border);
+  box-shadow: var(--shadow), inset 0 1px 1px rgba(255, 255, 255, 0.5);
+  padding: clamp(0.9rem, 2.2vw, 1.1rem);
+  box-sizing: border-box;
+}
+
+.uploadBox {
+  width: 100%;
+  min-height: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(1rem, 2.4vw, 1.25rem);
+  padding: clamp(1rem, 3vw, 1.6rem);
+  border-radius: calc(clamp(1.25rem, 3vw, 2rem) - 0.4rem);
+  background: rgba(255, 255, 255, 0.16);
+  border: 2px solid rgba(255, 255, 255, 0.45);
+  box-shadow:
+    18px 18px 45px rgba(164, 164, 210, 0.2),
+    -10px -10px 35px rgba(255, 255, 255, 0.72),
+    inset 0 1px 1px rgba(255, 255, 255, 0.45);
+  box-sizing: border-box;
+}
+
+.uploadIcon {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.circle {
+  width: clamp(4.5rem, 14vw, 6.2rem);
+  height: clamp(4.5rem, 14vw, 6.2rem);
+  border: 0;
+  border-radius: 50%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(1.55rem, 3vw, 2.35rem);
+  color: var(--accent);
+  background: linear-gradient(145deg, rgba(122, 82, 151, 0.22), rgba(233, 229, 244, 0));
+  box-shadow: 10px 10px 20px rgba(170, 170, 200, 0.24), -8px -8px 20px rgba(255, 255, 255, 0.85);
+  cursor: pointer;
+  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent; 
+}
+
+.circle:hover {
+  background: linear-gradient(145deg, rgba(122, 82, 151, 0.3), rgba(233, 229, 244, 0));
+  box-shadow: 10px 10px 20px rgba(170, 170, 200, 0.34), -8px -8px 20px rgba(255, 255, 255, 0.95);
+}
+
+.circle:active {
+  transform: scale(0.90);
+}
+
+.circle:focus-visible,
+.cancelBtn:focus-visible,
+.uploadBtn:focus-visible {
+  outline: 3px solid rgba(94, 19, 120, 0.28);
+  outline-offset: 3px;
+}
+
+.uploadText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.35rem;
+}
+
+.uploadText h3 {
+  margin: 0;
+  font-size: clamp(1.15rem, 2.4vw, 1.65rem);
+}
+
+.uploadText p {
+  margin: 0;
+  font-size: clamp(0.92rem, 1.8vw, 1rem);
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+@media (max-width: 640px) {
+  .app {
+    justify-content: center;
+    /* padding-top: clamp(1.5rem, 10vh, 3rem); */
+  }
+
+  .hero {
+    text-align: left;
+  }
+
+  .hero p {
+    margin-left: 0;
+  }
+
+  .glassmorfismBox {
+    min-height: auto;
+  }
+
+  .uploadBox {
+    justify-content: center;
+  }
+}
